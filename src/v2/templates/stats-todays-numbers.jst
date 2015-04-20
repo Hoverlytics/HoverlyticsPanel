@@ -1,0 +1,18 @@
+<%
+	var sourceInfo = results.get('todaysTopSource');
+	var todaysUniqueVisitors = results.get('todaysUniqueVisitors');
+	
+	var nothingText = "&nbsp;";
+%>
+<h5 class="todaysTopSource sourceItem <%- (sourceInfo) ? "" : "loading" %>"><em><%
+var sourceInfo = results.get('todaysTopSource'); 
+if (!sourceInfo) {
+print(nothingText);
+}
+else {
+%>
+<img src="<%= burntFavIconImageURLForSourceID(sourceInfo.sourceID) %>" width="16" height="16"><%= burntDisplayTextForCount(sourceInfo.visitorCount) %>
+<%
+}
+%></em> Top Source Today</h5>
+<h5 class="todaysUniqueVisitors <%- (todaysUniqueVisitors) ? "" : "loading" %>"><em><%= todaysUniqueVisitors ? burntDisplayTextForCount(todaysUniqueVisitors) : nothingText %></em> Visitors Today</h5>

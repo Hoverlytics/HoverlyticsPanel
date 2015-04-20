@@ -1,0 +1,22 @@
+<%
+	var totalPageViews = results.get('totalPageViews');
+	var averageTimeOnPage = results.get('averageTimeOnPage');
+	var entranceRate = results.get('entranceRate');
+	
+	var activeTopSourceID = null;
+	if (activeOptions.topSourceID) {
+		activeTopSourceID = activeOptions.topSourceID;
+		var topSources = results.get('topSources');
+		if (topSources) {
+			var sourceInfo = _.findWhere(topSources, {sourceID: activeTopSourceID});
+			averageTimeOnPage = sourceInfo.averageTimeOnPage;
+			entranceRate = sourceInfo.entranceRate;
+		}
+	}
+	
+	var nothingText = "&nbsp;";
+	var baseClass = activeTopSourceID ? ' topSourceActive' : '';
+%>
+<h5 class="totalPageViews<%- (totalPageViews) ? '' : ' loading' %>"><em><%= totalPageViews ? burntDisplayTextForCount(totalPageViews) : nothingText %></em> All Time Views</h5>
+<h5 class="averageTimeOnPage<%- (averageTimeOnPage) ? '' : ' loading' %><%- baseClass %>"><em><%= averageTimeOnPage ? burntDisplayDurationForSeconds(averageTimeOnPage) : nothingText %></em> Average Time</h5>
+<h5 class="entranceRate<%- (entranceRate) ? '' : ' loading' %><%- baseClass %>"><em><%= entranceRate ? burntDisplayNumberWithDecimalPlaces(entranceRate, 1) + "%" : nothingText %></em> Entered Here</h5>

@@ -1,0 +1,16 @@
+<%
+	var pastMonthVisitorsCount = results.get('visitorsCount');
+	var monthBeforeVisitorsCount = results.getResultsForMonthBefore().get('visitorsCount');
+	
+	var nothingText = '&nbsp;';
+%>
+<h5 id="pastMonthVisitors" class="<%- (pastMonthVisitorsCount != null) ? "" : "loading" %>"><em><%=
+	pastMonthVisitorsCount ?
+	burntDisplayTextForCount(pastMonthVisitorsCount) :
+	nothingText
+%></em><%- 'Monthly Visitors' %></h5>
+<h5 id="monthBeforeVisitors" class="<%- (monthBeforeVisitorsCount != null) ? "" : "loading" %>"><em><%=
+	monthBeforeVisitorsCount ?
+	burntDisplayTextForCount(monthBeforeVisitorsCount) :
+	nothingText
+%></em><%- 'Previous ' + daysPerMonth + ' Days' %></h5>

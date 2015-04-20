@@ -1,0 +1,22 @@
+<%
+var topKeywords = results.get('topKeywords');
+
+%>
+<h5>Top Keywords</h5>
+
+<ol id="topKeywordsList" class="<%- (topKeywords) ? "" : "loading" %>"><%
+if (topKeywords) {
+	//topKeywords = _.first(topKeywords, 2);
+	if (topKeywords.length === 0) {
+%>
+<li>No keywords.</li>
+<%
+	}
+	
+	_.each(topKeywords, function(keywordInfo) {%>
+<li class="keywordItem"><span class="visitorCount"><%= burntDisplayTextForCount(keywordInfo.visitorCount) %></span><span class="keyword"><%- keywordInfo.keyword %></span></li>
+<%
+	});
+}
+%>
+</ol>

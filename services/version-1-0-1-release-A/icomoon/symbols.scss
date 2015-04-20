@@ -1,0 +1,96 @@
+@font-face
+{
+	font-family: 'Hoverlytics-Symbols';
+	src:url('fonts/Hoverlytics-Symbols.eot');
+	src:url('fonts/Hoverlytics-Symbols.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Hoverlytics-Symbols.woff') format('woff'),
+		url('fonts/Hoverlytics-Symbols.ttf') format('truetype'),
+		url('fonts/Hoverlytics-Symbols.svg#Hoverlytics-Symbols') format('svg');
+    /*src: url('fonts/Hoverlytics-Symbols.eot?') format('embedded-opentype'), url('fonts/Hoverlytics-Symbols.woff') format('woff'), url('fonts/Hoverlytics-Symbols.ttf') format('truetype');*/
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before
+{
+	content: attr(data-icon);
+}
+
+[data-icon]:before,
+.icon-cog, .icon-Panel-Symbols-Left-Aligned, .icon-Panel-Symbols-Right-Aligned, .icon-Hoverlytics-logo, .icon-arrow-down-left, .icon-arrow-down-right,
+#hoverlyticsPageViewerToggleButton
+{
+	font-family: 'Hoverlytics-Symbols';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-cog:before
+{
+	content: "\e001";
+}
+.icon-Panel-Symbols-Left-Aligned:before
+{
+	content: "\e002";
+}
+.icon-Panel-Symbols-Right-Aligned:before
+{
+	content: "\e003";
+}
+.icon-Hoverlytics-logo:before
+{
+	content: "\e000";
+}
+.icon-arrow-down-left:before
+{
+	content: "\e004";
+}
+.icon-arrow-down-right:before
+{
+	content: "\e005";
+}
+
+
+
+#hoverlyticsPageViewerHolder
+{
+	&.alignedLeft
+	{
+		#hoverlyticsPageViewerToggleButton:before
+		{
+			content: "\e004";
+		}
+	}
+
+	&.alignedRight
+	{
+		#hoverlyticsPageViewerToggleButton:before
+		{
+			content: "\e005";
+		}
+	}
+}
+
+
+
+#hoverlyticsPageViewerSettings
+{
+	a:before
+	{
+		font-size: 48px;
+	}
+	
+	#hoverlyticsPageViewerSettingsAlignLeft:before
+	{
+		content: "\e002";
+	}
+	
+	#hoverlyticsPageViewerSettingsAlignRight:before
+	{
+		content: "\e003";
+	}
+}

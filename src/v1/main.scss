@@ -1,0 +1,615 @@
+/*!
+  (c) 2013 Patrick Smith
+*/
+
+$backgroundColor: #f9f9f9;
+
+
+$blueColor: #008ad2;
+$wornBlueColor: #5b7da2;
+$bloodOrangeColor: #fa583f;
+$lightOrangeColor: #ff7e00;
+$greenColor: #008394;
+
+$todayColor: $blueColor;
+$totalStatsColor: $blueColor;
+$earlierChartColor: $greenColor;
+$sourceColor: $bloodOrangeColor;
+
+$returningVisitorColor: $lightOrangeColor;
+$newVisitorColor: $bloodOrangeColor;
+
+
+#this_file_is_copyright_2013_Patrick_Smith
+{
+	margin: none;
+}
+
+
+body,
+h5
+{
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+}
+
+html,
+body
+{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+body
+{
+	position: relative;
+	width: 250px;
+	/*height: 348px;*/
+	
+	background-color: #caeafc;
+}
+
+h5
+{
+	/*text-transform: uppercase;*/
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 12px;
+	
+	em
+	{
+		font-style: inherit;
+		font-weight: inherit;
+	}
+}
+
+h6
+{
+	font-weight: normal;
+	margin: 0;
+}
+
+
+
+#profileDetails,
+#pageResults
+{
+	/*width: 250px;*/
+	/*min-height: 348px;*/
+	background-color: $backgroundColor;
+	
+	z-index: 1001;
+	display: none;
+}
+ 
+
+#profileDetails
+{
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-top: 16px;
+	padding-left: 12px;
+	padding-right: 12px;
+	
+	#authorizeButton
+	{
+		display: block;
+		height: 36px;
+		line-height: 36px;
+		padding-top: 1px;
+		padding-bottom: 0;
+		padding-left: 16px;
+		padding-right: 16px;
+		margin: auto;
+		margin-top: 16px;
+		font-size: 13px;
+		background-color: $bloodOrangeColor;
+		color: white;
+		border: none;
+	}
+	
+	#logInToAccountInstructions h5,
+	#accountChoices > h5
+	{
+		line-height: 15px;
+		color: $blueColor;
+		
+		a
+		{
+			color: $bloodOrangeColor;
+		}
+	}
+	
+	&.authorized
+	{
+		#authorizeButton,
+		#logInToAccountInstructions
+		{
+			display: none;
+		}
+	}
+	
+	body.needsAuthorization &,
+	body.showingSettings &,
+	body.needsAnalyticsProfile &
+	{
+		display: block;
+	}
+	
+	#accountChoices
+	{
+		ul#accountsList
+		{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			
+			li
+			{
+				padding-top: 12px;
+				padding-bottom: 12px;
+				padding-left: 12px;
+				padding-right: 12px;
+				margin-left: -12px;
+				margin-right: -12px;
+				margin-bottom: 6px;
+				background-color: white;
+				cursor: pointer;
+				
+				h5,
+				h6
+				{
+					color: $bloodOrangeColor;
+				}
+				
+				h5
+				{
+					font-size: 13px;
+					margin-bottom: 4px;
+				}
+				
+				h6
+				{
+					font-size: 11px;
+					color: $lightOrangeColor;
+				}
+				
+				&:hover,
+				&.selected
+				{
+					background-color: $bloodOrangeColor;
+					
+					h5,
+					h6
+					{
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+#pageResults
+{
+	overflow: hidden;
+	position: relative;
+	height: 100%;
+	
+	body.authorized.hasAnalyticsProfile &
+	{
+		display: block;
+	}
+	
+	
+	#encourageInstructions
+	{
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-top: 163px;
+		padding-left: 16px;
+		padding-right: 16px;
+		text-align: center;
+		background-color: $blueColor;
+		
+		h5
+		{
+			font-size: 15px;
+			line-height: 24px;
+			font-style: italic;
+			color: white;
+		}
+		
+		body.hasChosenPage &
+		{
+			display: none;
+		}
+	}
+	
+	
+	#todaysNumbers,
+	#visitorLoyalty,
+	#totalNumbers,
+	#topSources,
+	#topKeywords
+	{
+		padding-left: 12px;
+		padding-right: 12px;
+		
+		.loading
+		{
+			min-height: 24px;
+			background-image: url("/app/images/loading.gif");
+			background-position: left top;
+			background-repeat: no-repeat;
+		}
+	}
+	
+	ul,
+	ol
+	{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	h5
+	{
+		line-height: 18px;
+		
+		em
+		{
+			display: block;
+			font-size: 24px;
+			line-height: 24px;
+			font-weight: bold;
+		}
+	}
+	
+	h5.sourceItem,
+	li.sourceItem
+	{
+		img
+		{
+			vertical-align: top;
+			margin-top: 4px;
+			margin-right: 4px;
+		}
+	}
+	
+	
+	#todaysNumbers
+	{
+		overflow: hidden;
+		padding-top: 16px;
+		
+		h5.todaysTopSource
+		{
+			float: left;
+			text-align: left;
+			color: $sourceColor;
+			
+			em
+			{
+				font-size: 15px;
+			}
+		}
+		
+		h5.todaysUniqueVisitors
+		{
+			float: right;
+			text-align: right;
+			color: $todayColor;
+			
+			&.loading
+			{
+				background-position: right top;
+			}
+		}
+	}
+
+	
+	.sparkline
+	{
+		float: left;
+		width: 125px;
+		height: 50px;
+		
+		h5
+		{
+			text-align: center;
+			line-height: 15px;
+		}
+	}
+	
+	.wholeGraph
+	{
+		float: left;
+		width: 250px;
+		height: 150px;
+	}
+	
+	
+	#topGraphs
+	{
+		overflow: hidden;
+		width: 250px;
+		margin-bottom: 12px;
+		
+		.sparkline
+		{
+			position: relative;
+			padding-bottom: 18px;
+		}
+		
+		#monthSparkline h5
+		{
+			color: $earlierChartColor;
+		}
+		
+		#weekSparkline h5
+		{
+			color: $todayColor;
+		}
+	}
+	
+	
+	#visitorLoyalty
+	{
+		height: 24px;
+		margin-bottom: 12px;
+		
+		ul.newAndReturningVisitors
+		{
+			overflow: hidden;
+			margin-left: -12px;
+			margin-right: -12px;
+			margin-bottom: 12px;
+			
+			li
+			{
+				position: relative;
+				float: left;
+				height: 24px;
+				line-height: 24px;
+				color: white;
+				
+				span
+				{
+					position: absolute;
+					z-index: 11;
+					top: 0;
+					bottom: 0;
+					white-space: pre;
+				}
+				
+				&.returningVisitors
+				{
+					background-color: $returningVisitorColor;
+					
+					span
+					{
+						left: 12px;
+					}
+				}
+				
+				&.newVisitors
+				{
+					background-color: $newVisitorColor;
+					
+					span
+					{
+						right: 12px;
+					}
+				}
+			}
+		}
+	}
+	
+	
+	#totalNumbers
+	{
+		overflow: hidden;
+		float: right;
+		width: 113px;
+		padding-left: 0;
+		
+		h5
+		{
+			float: right;
+			text-align: right;
+			color: $totalStatsColor;
+			
+			&.loading
+			{
+				background-position: right top;
+			}
+			
+			&.entranceRate
+			{
+				margin-bottom: 0;
+			}
+			
+			&.topSourceActive
+			{
+				color: $bloodOrangeColor;
+			}
+		}
+	}
+	
+	
+	#topSources,
+	#topKeywords
+	{
+		float: left;
+		/*padding-bottom: 16px;*/
+		
+		h5
+		{
+			margin-bottom: 3px;
+			font-size: 10px;
+			font-weight: bold;
+			/*text-transform: uppercase;*/
+			color: $blueColor;
+		}
+	}
+	
+	
+	#topSources
+	{
+		float: left;
+		width: 113px;
+		padding-right: 0;
+		
+		&:hover
+		{
+			width: 226px;
+			margin-right: -113px;
+		}
+		
+		ol
+		{
+			li
+			{
+				line-height: 24px;
+				font-weight: bold;
+				color: $blueColor;
+				cursor: pointer;
+				
+				&:hover:after
+				{
+					content: " " attr(data-source-i-d);
+					font-weight: normal;
+					box-shadow: 0 0 4px 2px $backgroundColor;
+				}
+				
+				&.active,
+				&:hover
+				{
+					color: $bloodOrangeColor;
+				}
+				
+				&.active:after
+				{
+					content: '×';
+					display: inline-block;
+					margin-left: 6px;
+					width: 13px;
+					height: 13px;
+					font-size: 10px;
+					text-align: center;
+					vertical-align: middle;
+					line-height: 13px;
+					color: white;
+					background-color: $bloodOrangeColor;
+					border-radius: 1000px;
+				}
+				&.active:hover:after
+				{
+					font-weight: inherit;
+				}
+				
+				img
+				{
+					margin-top: 4px;
+				}
+			}
+		}
+	}
+	
+	#topKeywords
+	{
+		clear: both;
+		display: none;
+		min-height: 96px;
+		
+		#topKeywordsList
+		{
+			li
+			{
+				display: table-row;
+				height: 20px;
+				line-height: 20px;
+				
+				.visitorCount,
+				.keyword
+				{
+					display: table-cell;
+				}
+				
+				.visitorCount
+				{
+					text-align: right;
+					font-weight: bold;
+					color: $blueColor;
+					padding-right: 4px;
+				}
+				
+				.keyword
+				{
+					font-weight: normal;
+				}
+			}
+		}
+	}
+	
+	
+	#sectionOptions
+	{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-bottom: 8px;
+		background-color: $backgroundColor;
+		box-shadow: 0 0 8px 8px $backgroundColor;
+		
+		a
+		{
+			float: left;
+			display: block;
+			width: 32px;
+			height: 32px;
+			font-size: 32px;
+			color: #595959;
+			text-decoration: none;
+			cursor: pointer;
+			
+			&.selected,
+			&:hover
+			{
+				color: $blueColor;
+			}
+		}
+		
+		.teaserText
+		{
+			float: left;
+			text-align: left;
+			margin-top: 3px;
+			margin-left: 4px;
+			font-size: 9px;
+			line-height: 13px;
+			color: #8d8d8d;
+		}
+	}
+}
+
+
+
+#_blr-feedback-tab
+{
+	display: none;
+}

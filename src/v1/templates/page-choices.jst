@@ -1,0 +1,9 @@
+<ul class="pagesList">
+<%
+_.each(pages, function(pageInfo) {
+%>
+<li data-page-u-r-l="<%= pageInfo.URL %>"><%= pageInfo.title %></li>
+<%
+});
+%>
+</ul>

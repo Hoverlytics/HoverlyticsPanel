@@ -1,0 +1,15 @@
+<h5><strong>Step 3:</strong><br>
+<%- "Choose this website’s analytics account:" %></h5>
+<ul id="accountsList"><%
+var accountsList = profile.get('accountsList');
+if (accountsList) {
+	_.each(accountsList, function(accountInfo) {%>
+<li data-profile-i-d="<%- accountInfo.id %>">
+<h5><%- accountInfo.name %></h5>
+<h6><%- accountInfo.websiteUrl %></h6>
+</li>
+<%
+	});
+}
+%>
+</ul>

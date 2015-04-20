@@ -1,0 +1,116 @@
+@font-face
+{
+	font-family: 'Hoverlytics-Symbols';
+/*	src:url('fonts/Hoverlytics-Symbols.eot');
+	src:url('fonts/Hoverlytics-Symbols.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Hoverlytics-Symbols.woff') format('woff'),
+		url('fonts/Hoverlytics-Symbols.ttf') format('truetype'),
+		url('fonts/Hoverlytics-Symbols.svg#Hoverlytics-Symbols') format('svg');*/
+	
+	src:url('http://www.burntcaramel.com/-assets/fonts/hoverlytics/Hoverlytics-Symbols.eot');
+	src:url('http://www.burntcaramel.com/-assets/fonts/hoverlytics/Hoverlytics-Symbols.eot?#iefix') format('embedded-opentype'),
+		url('http://www.burntcaramel.com/-assets/fonts/hoverlytics/Hoverlytics-Symbols.woff') format('woff'),
+		url('http://www.burntcaramel.com/-assets/fonts/hoverlytics/Hoverlytics-Symbols.ttf') format('truetype'),
+		url('http://www.burntcaramel.com/-assets/fonts/hoverlytics/Hoverlytics-Symbols.svg#Hoverlytics-Symbols') format('svg');
+	
+	font-weight: normal;
+	font-style: normal;
+}
+
+[data-icon]:before
+{
+	content: attr(data-icon);
+}
+
+[data-icon]:before,
+.icon-cog, .icon-Panel-Symbols-Left-Aligned, .icon-Hoverlytics-logo, .icon-arrow-down-left, .icon-arrow-down-right, .icon-Panel-Symbols-Right-Aligned, .icon-Keyword-Symbol,
+#hoverlyticsPageViewerToggleButton,
+#sectionOptions a
+{
+	font-family: 'Hoverlytics-Symbols';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-cog:before {
+	content: "\53";
+}
+.icon-Panel-Symbols-Left-Aligned:before {
+	content: "\4c";
+}
+.icon-Hoverlytics-logo:before {
+	content: "\48";
+}
+.icon-arrow-down-left:before {
+	content: "\61";
+}
+.icon-arrow-down-right:before {
+	content: "\62";
+}
+.icon-Panel-Symbols-Right-Aligned:before {
+	content: "\52";
+}
+.icon-Keyword-Symbol:before {
+	content: "\4b";
+}
+
+
+
+#hoverlyticsPageViewerHolder
+{
+	&.alignedLeft
+	{
+		#hoverlyticsPageViewerToggleButton:before
+		{
+			content: "\61";
+		}
+	}
+
+	&.alignedRight
+	{
+		#hoverlyticsPageViewerToggleButton:before
+		{
+			content: "\62";
+		}
+	}
+}
+
+
+
+#hoverlyticsPageViewerSettings
+{
+	a:before
+	{
+		font-size: 48px;
+	}
+	
+	#hoverlyticsPageViewerSettingsAlignLeft:before
+	{
+		content: "\4c";
+	}
+	
+	#hoverlyticsPageViewerSettingsAlignRight:before
+	{
+		content: "\52";
+	}
+}
+
+#sectionOptions
+{
+	a
+	{
+		/*&:before
+		{
+			font-size: 32px;
+		}*/
+		
+		&.toggleKeywords:before
+		{
+			content: "\4b";
+		}
+	}
+}

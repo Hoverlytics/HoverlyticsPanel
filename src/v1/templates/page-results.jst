@@ -1,0 +1,21 @@
+<h5 class="totalUniqueVisitors"><em><%= results.get('totalUniqueVisitors') %></em> Total Unique Visitors</h5>
+<h5 class="todaysUniqueVisitors"><em><%= results.get('todaysUniqueVisitors') %></em> Visitors Today</h5>
+<ul class="newAndReturningVisitors"><%
+var newAndReturningVisitors = results.get('newAndReturningVisitors');
+var returningVisitorsPercent = Math.round(newAndReturningVisitors.returningVisitors * 100.0) + '%';
+var newVisitorsPercent = Math.round(newAndReturningVisitors.newVisitors * 100.0) + '%';
+%>
+<li class="returningVisitors" style="width: <%= returningVisitorsPercent %>;"><span><%= returningVisitorsPercent %> Returning</span></li>
+<li class="newVisitors" style="width: <%= newVisitorsPercent %>;"><span><%= newVisitorsPercent %> New</span></li>
+</ul>
+<h5 class="averageTimeOnPage"><%= burntDisplayDurationForSeconds(results.get('averageTimeOnPage')) %> Average Time on Page</h5>
+<ul class="topSources"><%
+var topSources = results.get('topSources');
+if (topSources) {
+	_.each(topSources, function(sourceInfo) {%>
+<li><%= sourceInfo.sourceID %>: <%= sourceInfo.visitorCount %></li>
+<%
+	});
+}
+%>
+</ul>

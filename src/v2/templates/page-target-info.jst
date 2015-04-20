@@ -1,0 +1,18 @@
+<h6><%
+	if (isViewingCurrentPage) {
+		print('Current page');
+	}
+	else {
+		var pageURL = results.get('pageURL');
+		if (pageURL) {
+			var pathComponents = pageURL.split('/');
+			var pathComponentsExceptLast = _.initial(pathComponents);
+			var lastPathComponent = _.last(pathComponents);
+			_.each(pathComponentsExceptLast, function(pathComponent) {
+				print('<span class="pathComponent">' + _.escape(pathComponent) + '</span>');
+				print('<span class="slash">/</span>');
+			});
+			print('<span class="pathComponent">' + _.escape(lastPathComponent) + '</span>');
+		}
+	}
+%></h6>

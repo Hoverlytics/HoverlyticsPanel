@@ -1,0 +1,148 @@
+/*  (c) 2013 Patrick Smith */
+#this_file_is_copyright_2013_Patrick_Smith {
+  margin: none; }
+
+#hoverlyticsPageViewerHolder {
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  overflow: hidden;
+  z-index: 15000;
+  padding-bottom: 52px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.666); }
+  #hoverlyticsPageViewerHolder #hoverlyticsPageViewerIFrame {
+    overflow: hidden;
+    display: block;
+    background-color: #f9f9f9; }
+  #hoverlyticsPageViewerHolder #hoverlyticsPageViewerButtonBar {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 52px;
+    height: 52px;
+    background-image: url("main-bar.png");
+    background-position: right top;
+    -webkit-transition: width 1s ease-in-out, background-position 0.8s ease-out;
+    -moz-transition: width 1s ease-in-out, background-position 0.8s ease-out;
+    -ms-transition: width 1s ease-in-out, background-position 0.8s ease-out;
+    -o-transition: width 1s ease-in-out, background-position 0.8s ease-out;
+    transition: width 1s ease-in-out, background-position 0.8s ease-out; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerButtonBar a {
+      opacity: 0;
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+      color: white;
+      -webkit-transition: opacity 0.5s ease-in-out;
+      -moz-transition: opacity 0.5s ease-in-out;
+      -ms-transition: opacity 0.5s ease-in-out;
+      -o-transition: opacity 0.5s ease-in-out;
+      transition: opacity 0.5s ease-in-out; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerToggleButton {
+      position: absolute;
+      width: 36px;
+      height: 52px; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerSettingsButton {
+      position: absolute;
+      right: 146px;
+      width: 36px; }
+  #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings {
+    z-index: 9;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #4d4d4d; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings {
+      bottom: -120px;
+      -webkit-transition: bottom 0.333s ease-in-out;
+      -moz-transition: bottom 0.333s ease-in-out;
+      -ms-transition: bottom 0.333s ease-in-out;
+      -o-transition: bottom 0.333s ease-in-out;
+      transition: bottom 0.333s ease-in-out; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings.active {
+      width: 226px;
+      bottom: 52px; }
+    #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings a {
+      float: left;
+      display: block;
+      font-family: Verdana, sans-serif;
+      font-size: 11px;
+      line-height: 48px;
+      font-weight: normal;
+      font-style: normal;
+      vertical-align: middle;
+      color: white;
+      cursor: pointer; }
+      #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings a {
+        opacity: 0.58; }
+        #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings a:hover {
+          opacity: 1.0; }
+      #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings a.selected {
+        opacity: 1.0; }
+      #hoverlyticsPageViewerHolder #hoverlyticsPageViewerSettings a:before {
+        font-size: 48px;
+        line-height: 48px;
+        vertical-align: middle; }
+  #hoverlyticsPageViewerHolder {
+    width: 52px;
+    height: 0;
+    opacity: 0.27777;
+    -webkit-transition: opacity 0.5s ease-in, width 1s ease-in-out, height 1s ease-in-out, box-shadow 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in, width 1s ease-in-out, height 1s ease-in-out, box-shadow 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in, width 1s ease-in-out, height 1s ease-in-out, box-shadow 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in, width 1s ease-in-out, height 1s ease-in-out, box-shadow 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in, width 1s ease-in-out, height 1s ease-in-out, box-shadow 0.5s ease-in-out; }
+  #hoverlyticsPageViewerHolder.active {
+    opacity: 0.94; }
+  #hoverlyticsPageViewerHolder.enabled {
+    width: 250px;
+    height: 348px; }
+    #hoverlyticsPageViewerHolder.enabled #hoverlyticsPageViewerButtonBar {
+      width: 250px;
+      background-position: left top;
+      -webkit-transition: width 1s ease-in-out, background-position 0.888s ease-in 0.1s;
+      -moz-transition: width 1s ease-in-out, background-position 0.888s ease-in 0.1s;
+      -ms-transition: width 1s ease-in-out, background-position 0.888s ease-in 0.1s;
+      -o-transition: width 1s ease-in-out, background-position 0.888s ease-in 0.1s;
+      transition: width 1s ease-in-out, background-position 0.888s ease-in 0.1s; }
+      #hoverlyticsPageViewerHolder.enabled #hoverlyticsPageViewerButtonBar a {
+        opacity: 0.666; }
+        #hoverlyticsPageViewerHolder.enabled #hoverlyticsPageViewerButtonBar a:hover {
+          opacity: 1.0; }
+  #hoverlyticsPageViewerHolder:not(.enabled) {
+    box-shadow: 0px 0px 32px #008ad2; }
+  #hoverlyticsPageViewerHolder.alignedLeft {
+    left: 0;
+    right: auto; }
+    #hoverlyticsPageViewerHolder.alignedLeft #hoverlyticsPageViewerButtonBar {
+      background-position: right top; }
+      #hoverlyticsPageViewerHolder.alignedLeft #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerToggleButton {
+        left: 0; }
+      #hoverlyticsPageViewerHolder.alignedLeft #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerSettingsButton {
+        right: 178px; }
+    #hoverlyticsPageViewerHolder.alignedLeft.enabled #hoverlyticsPageViewerButtonBar {
+      background-position: left top; }
+  #hoverlyticsPageViewerHolder.alignedRight {
+    left: auto;
+    right: 0; }
+    #hoverlyticsPageViewerHolder.alignedRight #hoverlyticsPageViewerButtonBar {
+      background-position: left bottom; }
+      #hoverlyticsPageViewerHolder.alignedRight #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerToggleButton {
+        right: 0; }
+      #hoverlyticsPageViewerHolder.alignedRight #hoverlyticsPageViewerButtonBar #hoverlyticsPageViewerSettingsButton {
+        left: 178px; }
+    #hoverlyticsPageViewerHolder.alignedRight.enabled #hoverlyticsPageViewerButtonBar {
+      background-position: right bottom; }
+  #hoverlyticsPageViewerHolder.changingAlignment #hoverlyticsPageViewerButtonBar {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none; }

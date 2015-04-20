@@ -1,0 +1,912 @@
+/*!
+  (c) 2013 Patrick Smith
+*/
+
+$backgroundColor: #f9f9f9;
+
+
+$blueColor: #008ad2;
+$bloodOrangeColor: #fa583f;
+//$bloodOrangeColor: #f6543c;
+$lightOrangeColor: #ff7e00;
+$lightOrangeColor: #ff8700;
+$orangeColor: #ff833b;
+$mustardColor: #ffa100;
+$greenColor: #008394;
+//$greenColor: #00989f;
+$darkGreyColor: #404040;
+$midGreyColor: #595959;
+$purpleColor: #b663c8;
+$purpleColor: #c355f1;
+$limeColor: #6fc703;
+$blueGreenColor: #04bba0;
+$lightBlueColor: #00b8e1;
+
+$todayColor: $blueColor;
+$sourceColor: $lightOrangeColor;
+$totalStatsColor: $blueColor;
+//$sourceColor: $limeColor;
+
+$returningVisitorColor: $lightBlueColor; // $purpleColor $greenColor $mustardColor $limeColor
+$newVisitorColor: $bloodOrangeColor; //$bloodOrangeColor;
+$allVisitorColor: $purpleColor;
+
+
+%secondaryNumberFont
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+#this_file_is_copyright_2013_Patrick_Smith
+{
+	margin: none;
+}
+
+
+body,
+h5
+{
+	font-family: Verdana, sans-serif;
+	font-size: 11px;
+}
+
+html,
+body
+{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+body
+{
+	position: relative;
+	width: 250px;
+	/*height: 348px;*/
+	
+	background-color: #caeafc;
+}
+
+h5
+{
+	/*text-transform: uppercase;*/
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 12px;
+	
+	em
+	{
+		font-style: inherit;
+		font-weight: inherit;
+	}
+}
+
+h6
+{
+	font-weight: normal;
+	margin: 0;
+}
+
+
+
+#profileDetails,
+#pageResults
+{
+	/*width: 250px;*/
+	/*min-height: 348px;*/
+	background-color: $backgroundColor;
+	
+	z-index: 1001;
+	display: none;
+}
+ 
+
+#profileDetails
+{
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-top: 16px;
+	padding-left: 12px;
+	padding-right: 12px;
+	
+	#authorizeButton
+	{
+		display: block;
+		height: 36px;
+		line-height: 36px;
+		padding-top: 1px;
+		padding-bottom: 0;
+		padding-left: 16px;
+		padding-right: 16px;
+		margin: auto;
+		margin-top: 16px;
+		font-size: 13px;
+		background-color: $bloodOrangeColor;
+		color: white;
+		border: none;
+	}
+	
+	#logInToAccountInstructions h5,
+	#accountChoices > h5
+	{
+		line-height: 15px;
+		color: $blueColor;
+		
+		a
+		{
+			color: $bloodOrangeColor;
+		}
+	}
+	
+	&.authorized
+	{
+		#authorizeButton,
+		#logInToAccountInstructions
+		{
+			display: none;
+		}
+	}
+	
+	body.needsAuthorization &,
+	body.showingSettings &,
+	body.needsAnalyticsProfile &
+	{
+		display: block;
+	}
+	
+	#accountChoices
+	{
+		display: none;
+		
+		body.needsAnalyticsProfile &
+		{
+			display: block;
+		}
+		
+		ul#accountsList
+		{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			
+			li
+			{
+				padding-top: 12px;
+				padding-bottom: 12px;
+				padding-left: 12px;
+				padding-right: 12px;
+				margin-left: -12px;
+				margin-right: -12px;
+				margin-bottom: 6px;
+				background-color: white;
+				cursor: pointer;
+				
+				h5,
+				h6
+				{
+					color: $bloodOrangeColor;
+				}
+				
+				h5
+				{
+					font-size: 13px;
+					margin-bottom: 4px;
+				}
+				
+				h6
+				{
+					font-size: 11px;
+					color: $lightOrangeColor;
+				}
+				
+				&:hover,
+				&.selected
+				{
+					background-color: $bloodOrangeColor;
+					
+					h5,
+					h6
+					{
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+#pageResults
+{
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 72px;
+	background-color: $darkGreyColor;
+	
+	body.authorized.hasAnalyticsProfile &
+	{
+		display: block;
+	}
+	
+	
+	#encourageInstructions
+	{
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-top: 163px;
+		padding-left: 16px;
+		padding-right: 16px;
+		text-align: center;
+		background-color: $blueColor;
+		
+		h5
+		{
+			font-size: 15px;
+			line-height: 24px;
+			font-style: italic;
+			color: white;
+		}
+		
+		body.hasChosenPage &
+		{
+			display: none;
+		}
+	}
+	
+	
+	#pageTargetInfo
+	{
+		height: 22px;
+		padding-left: 6px;
+		padding-right: 6px;
+		background-color: $darkGreyColor;
+
+		h6
+		{
+			overflow: hidden;
+			line-height: 22px;
+			font-size: 10px;
+			font-weight: bold;
+			white-space: nowrap;
+			-o-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+			//color: rgba(white, 0.15);
+			color: rgba(white, 0.3);
+			
+			.slash
+			{
+				opacity: 0.46;
+			}
+		}
+	}
+	
+	
+	#todaysNumbers,
+	#recentNumbers,
+	#totalNumbers,
+	#visitorLoyalty,
+	#topSources,
+	#topKeywords
+	{
+		padding-left: 12px;
+		padding-right: 12px;
+		
+		.loading
+		{
+			min-height: 24px;
+			background-image: image-url('loading.gif');
+			background-size: 24px;
+			background-position: left top;
+			background-repeat: no-repeat;
+		}
+	}
+	
+	ul,
+	ol
+	{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	h5
+	{
+		/*font-size: 10px;
+		font-weight: bold;*/
+		line-height: 18px;
+		
+		em
+		{
+			display: block;
+			font-size: 24px;
+			line-height: 24px;
+			font-weight: bold;
+		}
+	}
+	
+	h5.sourceItem,
+	li.sourceItem
+	{
+		img
+		{
+			vertical-align: top;
+			margin-top: 4px;
+			margin-right: 4px;
+		}
+	}
+	
+	
+	#todaysNumbers
+	{
+		overflow: hidden;
+		padding-top: 16px;
+		
+		h5.todaysUniqueVisitors
+		{
+			float: left;
+			text-align: left;
+			color: $todayColor;
+		}
+		
+		h5.todaysTopSource
+		{
+			float: right;
+			text-align: right;
+			color: $sourceColor;
+			
+			em
+			{
+				@extend %secondaryNumberFont;
+			}
+			
+			&.loading
+			{
+				background-position: right top;
+			}
+		}
+	}
+
+	
+	.sparkline
+	{
+		float: left;
+		width: 125px;
+		height: 50px;
+		
+		h5
+		{
+			text-align: center;
+			line-height: 15px;
+		}
+	}
+	
+	.wholeGraph
+	{
+		float: left;
+		width: 250px;
+		height: 150px;
+	}
+	
+	
+	#topCharts
+	{
+		overflow: hidden;
+		width: 250px;
+		height: 75px;
+		/*margin-bottom: 12px;
+		padding-bottom: 18px;*/
+		
+		.earlierChart .main
+		{
+			fill: $todayColor;
+			opacity: 0.92;
+			
+			&.hasActiveSource
+			{
+				fill: none;
+				stroke: $todayColor;
+			}
+		}
+		
+		.recentChart .main
+		{
+			fill: $todayColor;
+			
+			&.hasActiveSource
+			{
+				fill: none;
+				stroke: $todayColor;
+			}
+		}
+		
+		.chart .timeAxis
+		{
+			line
+			{
+				fill: none;
+				stroke: $todayColor;
+				stroke-opacity: 0.44;
+				shape-rendering: crispEdges;
+			}
+			
+			.domain
+			{
+				display: none;
+			}
+			
+			text
+			{
+				font-size: 8px;
+				/*font-weight: bold;*/
+				fill: $todayColor;
+				opacity: 0.75;
+			}
+		}
+		
+		.earlierChart .timeAxis line.minor,
+		.recentChart .timeAxis .major line
+		{
+			stroke: white;
+			stroke-opacity: 0.25;
+		}
+		
+		.chart path
+		{
+			&.newVisitors
+			{
+				fill: $newVisitorColor;
+			}
+			
+			&.returningVisitors
+			{
+				fill: $returningVisitorColor;
+			}
+			
+			&.allVisitors
+			{
+				fill: $allVisitorColor;
+			}
+		}
+		
+		.earlierChart .timeAxis text
+		{
+			text-anchor: start !important;
+		}
+		
+		.activeSource
+		{
+			fill: $sourceColor;
+		}
+		
+		.comparedPathBelow
+		{
+			fill: $greenColor;
+		}
+		
+		.comparedPathAbove
+		{
+			fill: $bloodOrangeColor;
+		}
+	}
+	
+	/*#chartOptions
+	{
+		float: right;
+		padding-right: 12px;
+		
+		a
+		{
+			float: left;
+			display: block;
+			width: 32px;
+			height: 32px;
+			font-size: 32px;
+			color: $midGreyColor;
+			
+			&:hover
+			{
+				color: $blueColor;
+				cursor: pointer;
+			}
+		}
+	}*/
+	
+	
+	#recentNumbers #pastMonthVisitors,
+	#totalNumbers h5
+	{
+		&.loading
+		{
+			background-position: right top;
+		}
+	}
+	
+	
+	#recentNumbers
+	{
+		h5
+		{
+			margin-bottom: 10px;
+			color: $todayColor;
+			
+			em
+			{
+				/*font-size: 16px;*/
+			}
+		}
+		
+		#pastMonthVisitors
+		{
+			float: right;
+			text-align: right;
+		}
+		
+		#monthBeforeVisitors
+		{
+			float: left;
+			text-align: left;
+			color: $blueColor;
+			
+			em
+			{
+				font-size: 16px;
+				line-height: 1em;
+				padding-top: 8px;
+			}
+		}
+		
+		#pastWeekVisitors
+		{
+			display: none;
+			float: right;
+			text-align: right;
+		}
+	}
+	
+	
+	#totalNumbers
+	{
+		clear: both;
+		float: right;
+		width: 113px;
+		padding-left: 0;
+		
+		h5
+		{
+			float: right;
+			text-align: right;
+			color: $totalStatsColor;
+			
+			&.entranceRate
+			{
+				margin-bottom: 0;
+			}
+			
+			&.topSourceActive
+			{
+				color: $sourceColor;
+			}
+		}
+	}
+	
+	
+	/*#visitorLoyalty
+	{
+		clear: both;
+		height: 36px;
+		margin-bottom: 12px;
+		
+		ul#newAndReturningVisitors
+		{
+			margin-left: -12px;
+			margin-right: -12px;
+			margin-bottom: 12px;
+			
+			li
+			{
+				position: relative;
+				float: left;
+				height: 16px;
+				line-height: 11px;
+				
+				h5
+				{
+					position: absolute;
+					z-index: 11;
+					top: 16px;
+					line-height: 1em;
+					white-space: pre;
+					
+					em
+					{
+						display: inline;
+						font-size: 11px;
+						font-weight: bold;
+					}
+				}
+				
+				&.returningVisitors
+				{
+					color: $returningVisitorColor;
+					background-color: $returningVisitorColor;
+					
+					h5
+					{
+						left: 12px;
+					}
+				}
+				
+				&.newVisitors
+				{
+					color: $newVisitorColor;
+					background-color: $newVisitorColor;
+					
+					h5
+					{
+						right: 12px;
+					}
+				}
+			}
+		}
+	}*/
+	
+	
+	#visitorLoyalty
+	{
+		clear: both;
+		width: 250px;
+		height: 43px;
+		padding-top: 2px;
+		padding-left: 0;
+		padding-right: 0;
+		
+		ul#newAndReturningVisitors
+		{
+			position: relative;
+			
+			li
+			{
+				float: left;
+				height: 8px;
+				line-height: 11px;
+				
+				h5
+				{
+					position: absolute;
+					z-index: 11;
+					/*left: 0;*/
+					line-height: 1em;
+					white-space: pre;
+					
+					em
+					{
+						@extend %secondaryNumberFont;
+						
+						display: inline;
+					}
+				}
+				
+				&.newVisitors
+				{
+					color: $newVisitorColor;
+					background-color: $newVisitorColor;
+					
+					h5
+					{
+						/*top: -22px;*/
+						top: 8px;
+						left: 12px;
+					}
+				}
+				
+				&.returningVisitors
+				{
+					color: $returningVisitorColor;
+					background-color: $returningVisitorColor;
+					
+					h5
+					{
+						top: 8px;
+						right: 12px;
+					}
+				}
+			}
+		}
+	}
+	
+	
+	#topSources,
+	#topKeywords
+	{
+		float: left;
+		/*padding-bottom: 16px;*/
+		
+		h5
+		{
+			//margin-bottom: 3px;
+			/*font-size: 10px;
+			font-weight: bold;*/
+			/*text-transform: uppercase;*/
+			color: $blueColor;
+		}
+	}
+	
+	
+	#topSources
+	{
+		float: left;
+		margin-top: 1px;
+		width: 113px;
+		padding-right: 0;
+		
+		&:hover
+		{
+			width: 226px;
+			margin-right: -113px;
+		}
+		
+		h5
+		{
+			margin-top: -4px;
+			color: $sourceColor;
+		}
+		
+		ol
+		{
+			li
+			{
+				@extend %secondaryNumberFont;
+				
+				margin-bottom: 1px;
+				line-height: 26px;
+				color: $sourceColor;
+				cursor: pointer;
+				
+				&:hover:after
+				{
+					content: " " attr(data-source-i-d);
+					position: absolute;
+					margin-top: 5px;
+					margin-left: 4px;
+					vertical-align: bottom;
+					font-size: 10px;
+					line-height: 16px;
+					font-weight: normal;
+					word-break: break-all;
+					background-color: $backgroundColor;
+					box-shadow: 4px 0 4px 2px $backgroundColor;
+				}
+				
+				&.active,
+				&:hover
+				{
+					color: $sourceColor;
+				}
+				
+				&.active:after
+				{
+					content: '×';
+					display: inline-block;
+					margin-left: 6px;
+					width: 13px;
+					height: 13px;
+					font-size: 10px;
+					text-align: center;
+					vertical-align: middle;
+					line-height: 13px;
+					color: white;
+					background-color: $sourceColor;
+					border-radius: 1000px;
+				}
+				&.active:hover:after
+				{
+					font-weight: inherit;
+				}
+				
+				img
+				{
+					margin-top: 5px;
+				}
+			}
+		}
+	}
+	
+	#topKeywords
+	{
+		clear: both;
+		display: none;
+		min-height: 96px;
+		
+		#topKeywordsList
+		{
+			li
+			{
+				display: table-row;
+				height: 20px;
+				line-height: 20px;
+				
+				.visitorCount,
+				.keyword
+				{
+					display: table-cell;
+				}
+				
+				.visitorCount
+				{
+					text-align: right;
+					font-weight: bold;
+					color: $blueColor;
+					padding-right: 4px;
+				}
+				
+				.keyword
+				{
+					font-weight: normal;
+				}
+			}
+		}
+	}
+	
+	
+	#sectionOptions
+	{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-bottom: 8px;
+		background-color: $backgroundColor;
+		box-shadow: 0 0 8px 8px $backgroundColor;
+		
+		a
+		{
+			float: left;
+			display: block;
+			width: 32px;
+			height: 32px;
+			font-size: 24px;
+			color: $midGreyColor;
+			text-decoration: none;
+			cursor: pointer;
+			
+			&.selected,
+			&:hover
+			{
+				color: $blueColor;
+			}
+		}
+		
+		.teaserText
+		{
+			float: left;
+			text-align: left;
+			margin-top: 3px;
+			margin-left: 4px;
+			font-size: 9px;
+			line-height: 13px;
+			color: #8d8d8d;
+		}
+	}
+}
+
+
+
+#_blr-feedback-tab
+{
+	display: none;
+}

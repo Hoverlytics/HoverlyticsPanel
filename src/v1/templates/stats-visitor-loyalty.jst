@@ -1,0 +1,12 @@
+<ul class="newAndReturningVisitors"><%
+var newAndReturningVisitors = results.get('newAndReturningVisitors');
+if (newAndReturningVisitors) {
+var newVisitorsPercent = Math.round(newAndReturningVisitors.newVisitors * 100.0);
+var returningVisitorsPercent = 100 - newVisitorsPercent;
+%>
+<li class="returningVisitors" style="width: <%= returningVisitorsPercent %>%;"><span><%= returningVisitorsPercent %>% Returning</span></li>
+<li class="newVisitors" style="width: <%= newVisitorsPercent %>%;"><span><%= newVisitorsPercent %>% New</span></li>
+<%
+}
+%>
+</ul>

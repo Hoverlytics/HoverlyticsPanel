@@ -1,0 +1,17 @@
+<%
+var topSources = results.get('topSources');
+
+%>
+<ol id="topSourcesList" class="<%- (topSources) ? "" : "loading" %>"><%
+if (topSources) {
+	var topSourceID = activeOptions.topSourceID || null;
+	topSources = _.first(topSources, 5);
+	_.each(topSources, function(sourceInfo) {
+%>
+<li class="sourceItem<%= (topSourceID == sourceInfo.sourceID) ? ' active' : '' %>" title="<%- sourceInfo.sourceID %>" data-source-i-d="<%- sourceInfo.sourceID %>"><img src="<%= burntFavIconImageURLForSourceID(sourceInfo.sourceID) %>" width="16" height="16"><%= burntDisplayTextForCount(sourceInfo.visitorCount) %></li>
+<%
+	});
+}
+%>
+</ol>
+<h5>Top Sources</h5>

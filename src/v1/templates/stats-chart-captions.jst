@@ -1,0 +1,14 @@
+<%
+	var pastMonthVisitorsCount = results.get('pastMonthVisitorsCount');
+	var pastWeekVisitorsCount = results.get('pastWeekVisitorsCount');
+%>
+<h5 id="pastMonthVisitorsChartCaption"><%=
+	pastMonthVisitorsCount ?
+	burntDisplayTextForCount(pastMonthVisitorsCount) + ' Monthly' :
+	'-'
+%></h5>
+<h5 id="pastWeekVisitorsChartCaption"><%=
+	pastWeekVisitorsCount ?
+	burntDisplayTextForCount(pastWeekVisitorsCount) + ' Past Week' :
+	'-'
+%></h5>
